@@ -62,6 +62,15 @@ No ports are exposed to the internet directly.
 - Configured iptables to forward Tailscale traffic to LXC container
 - Rules saved with netfilter-persistent for persistence on reboot
 
+## Download Privacy
+
+qBittorrent traffic is routed through NordVPN for privacy.
+
+- NordVPN installed inside Jellyfin LXC
+- qBittorrent bound to `nordlynx` network interface
+- Kill switch enabled — downloads stop if VPN disconnects
+- LAN discovery enabled to maintain local network access
+
 ## Future Improvements
 - Add hardware transcoding
 - Migrate media storage to a NAS
