@@ -42,8 +42,27 @@ by Jellyfin over a network share.
 - Media library pointed to /mnt/media
 - Metadata pulled from TheMovieDb
 
+## Remote Access
+
+Remote access is provided via **Tailscale** (WireGuard-based VPN).
+No ports are exposed to the internet directly.
+
+### Services accessible via Tailscale
+
+| Service | URL |
+|---------|-----|
+| Jellyfin | http://YOUR-TAILSCALE-IP:8096 |
+| Sonarr | http://YOUR-TAILSCALE-IP:8989 |
+| Radarr | http://YOUR-TAILSCALE-IP:7878 |
+| Prowlarr | http://YOUR-TAILSCALE-IP:9696 |
+| qBittorrent | http://YOUR-TAILSCALE-IP:8080 |
+
+### Setup Summary
+- Installed Tailscale on Proxmox host
+- Configured iptables to forward Tailscale traffic to LXC container
+- Rules saved with netfilter-persistent for persistence on reboot
+
 ## Future Improvements
-- Set up remote access via VPN
 - Add hardware transcoding
 - Migrate media storage to a NAS
 - Set up automatic backups
