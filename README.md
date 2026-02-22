@@ -18,6 +18,8 @@ by Jellyfin over a network share.
 - Share is bind-mounted into the Jellyfin LXC container
 - Jellyfin serves media over the local network
 
+![Media Server Architecture](architecture/media_server_diagram.png)
+
 ## Setup Summary
 
 ### SMB Share (Windows 11)
