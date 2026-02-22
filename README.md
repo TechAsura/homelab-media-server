@@ -11,6 +11,7 @@ by Jellyfin over a network share.
 - **Jellyfin Host:** LXC Container (Ubuntu 22.04)
 - **Media Storage:** Windows 11 PC (SMB share)
 - **Media Player:** Jellyfin
+- **Request Management:** Jellyseerr
 
 ## Architecture
 - Windows 11 PC hosts media files via SMB share
@@ -61,6 +62,14 @@ No ports are exposed to the internet directly.
 - Installed Tailscale on Proxmox host
 - Configured iptables to forward Tailscale traffic to LXC container
 - Rules saved with netfilter-persistent for persistence on reboot
+
+### Jellyseerr
+- Installed via Docker
+- Connected to Jellyfin, Radarr and Sonarr
+- Shows automatically sorted to `/mnt/media/Shows`
+- Anime automatically sorted to `/mnt/media/Anime`
+- Movies sorted to `/mnt/media/Movies`
+- Accessible via Tailscale at `http://YOUR-TAILSCALE-IP:5055`
 
 ## Download Privacy
 
