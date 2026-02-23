@@ -80,6 +80,33 @@ qBittorrent traffic is routed through NordVPN for privacy.
 - Kill switch enabled — downloads stop if VPN disconnects
 - LAN discovery enabled to maintain local network access
 
+## Troubleshooting
+
+### Disk Space
+The LXC disk filled up due to Docker images and Jellyfin metadata.
+Resolved by resizing the LXC disk from 8GB to 18GB:
+```bash
+pct stop 102
+e2fsck -f /dev/mapper/pve-vm--102--disk--0
+lvresize -L +10G /dev/pve/vm-102-disk-0
+resize2fs /dev/mapper/pve-vm--102--disk--0
+pct start 102
+```
+
+### NordVPN DNS Issue
+NordVPN overwrites `/etc/resolv.conf` causing DNS failures.
+Resolved by creating a cron job to restore DNS every minute:
+```bash
+# /etc/nordvpn/dns-fix.sh
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+```
+
+Added to crontab:
+```
+* * * * * /etc/nordvpn/dns-fix.sh
+```
+
 ## Future Improvements
 - Add hardware transcoding
 - Migrate media storage to a NAS
