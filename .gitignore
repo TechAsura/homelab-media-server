@@ -1,0 +1,49 @@
+# ========================
+# OS - Windows
+# ========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ========================
+# IDE - JetBrains
+# ========================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ========================
+# Media Server
+# ========================
+# Environment files with secrets
+.env
+.env.*
+!.env.example
+
+# Jellyfin data / metadata cache
+config/
+cache/
+data/
+metadata/
+transcodes/
+
+# Docker volumes
+volumes/
+
+# Logs
+*.log
+logs/
+
+# Backup files
+*.bak
+*.backup
+
+# Sensitive config
+*.key
+*.pem
+*.crt
+secrets/
